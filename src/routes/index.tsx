@@ -35,7 +35,7 @@ import {
 import { getDashboardUserSummary } from "@/lib/server/users";
 import { formatPieces, formatRupiah } from "@/lib/utils";
 
-export const Route = createFileRoute("/dashboard")({
+export const Route = createFileRoute("/")({
 	beforeLoad: async () => {
 		const { session } = await getServerSession();
 		if (!session) {
