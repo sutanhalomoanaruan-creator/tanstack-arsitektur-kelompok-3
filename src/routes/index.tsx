@@ -1,19 +1,10 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CreditCard, Sparkles, UserCheck, ShieldCheck, Clock } from "lucide-react";
-
-import { ProductArtwork } from "@/components/storefront/product-artwork";
-import { getPublicProducts } from "@/lib/server/products";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
-    const productsQuery = useQuery({
-        queryKey: ["storefront", "products"],
-        queryFn: () => getPublicProducts(),
-    });
-
     return (
         <main>
             {/* Hero Section */}
@@ -35,10 +26,10 @@ function Home() {
                         </p>
                         <div className="mt-8 flex flex-wrap gap-3">
                             <Link
-                                to="/products"
+                                to="/dashboard"
                                 className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-bold text-white no-underline transition hover:bg-blue-500"
                             >
-                                Tap Absensi KTM <ArrowRight size={17} />
+                                Buka Dashboard <ArrowRight size={17} />
                             </Link>
                             <a
                                 href="#fitur"
@@ -50,12 +41,11 @@ function Home() {
                     </div>
                     <div className="relative mx-auto w-full max-w-lg">
                         <div className="absolute -inset-5 rounded-[3rem] border border-blue-400/20" />
-                        <ProductArtwork
-                            category="KTM RFID / Barcode"
-                            imageUrl=""
-                            name="Kartu Tanda Mahasiswa"
-                            className="min-h-[22rem] rounded-[2.5rem] sm:min-h-[29rem]"
-                        />
+                        <div className="flex min-h-[22rem] flex-col items-center justify-center rounded-[2.5rem] bg-slate-900 border border-slate-800 p-8 text-center sm:min-h-[29rem]">
+                            <CreditCard size={64} className="mb-4 text-blue-400" />
+                            <h3 className="font-serif text-2xl font-bold text-white">Kartu Tanda Mahasiswa</h3>
+                            <p className="mt-2 text-sm text-slate-400">Tap KTM Anda untuk verifikasi presensi secara instan.</p>
+                        </div>
                         <div className="absolute -bottom-5 left-4 rounded-2xl border border-white/10 bg-slate-900/90 p-4 shadow-xl backdrop-blur sm:left-[-2rem]">
                             <div className="flex items-center gap-3">
                                 <span className="grid h-10 w-10 place-items-center rounded-full bg-blue-500 text-white">
@@ -83,10 +73,10 @@ function Home() {
                         </p>
                     </div>
                     <Link
-                        to="/products"
+                        to="/dashboard"
                         className="inline-flex items-center gap-2 text-sm font-bold text-blue-900 no-underline"
                     >
-                        Mulai Scan <ArrowRight size={16} />
+                        Akses Sistem <ArrowRight size={16} />
                     </Link>
                 </div>
             </section>
