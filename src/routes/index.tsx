@@ -39,11 +39,11 @@ export const Route = createFileRoute("/")({
 	beforeLoad: async () => {
 		const { session } = await getServerSession();
 		if (!session) {
-			return redirect({ to: "/demo/better-auth" }) as any;
+			throw redirect({ to: "/login" });
 		}
 		const { canManageUsers } = await getDashboardUserSummary();
 		if (!canManageUsers) {
-			return redirect({ to: "/" }) as any;
+			throw redirect({ to: "/products" });
 		}
 	},
 	component: Dashboard,

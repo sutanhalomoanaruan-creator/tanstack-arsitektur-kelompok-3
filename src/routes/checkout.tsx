@@ -12,7 +12,7 @@ export const Route = createFileRoute("/checkout")({
 	beforeLoad: async () => {
 		const { session } = await getServerSession();
 		if (!session) {
-			throw redirect({ to: "/demo/better-auth" });
+			throw redirect({ to: "/login" });
 		}
 	},
 	component: Checkout,
